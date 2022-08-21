@@ -1,0 +1,23 @@
+<component>
+	name = "VC7.1 Tools"
+	category = ModulePart
+	LocalRoot = "Tools\CompileTools\X86\"
+	RefName = "VC7_1_Tools"
+[files]
+"c1.dll"	
+"c1xx.dll"	
+"c2.dll"	
+"cl.exe"	
+"lib.exe"	
+"link.exe"	
+"MSDBI60.DLL"	
+"msobj71.dll"	
+"mspdb71.dll"	
+"msvcp71.dll"	
+"msvcr71.dll"	
+"nmake.exe"	
+"vc71.sdl"	
+"vc71.mak"	
+"ML.ERR"	
+"ML.EXE"	
+<endComponent>

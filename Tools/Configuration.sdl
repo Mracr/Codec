@@ -1,0 +1,221 @@
+TOKEN
+	Name  = "SILENT"
+	Value  = "0"
+	Help  = "Enables/disables silent build mode.\In silent build mode executed commands are not displayed, and certain auxiliary build process messages are suppressed or displayed in a condensed format.\In non-silent build mode executed command are displayed prior to execution, and all auxiliary messages are visible.\Silent build mode is typically faster because less information goes into a build log.\Non-silent mode is useful for debugging of the build issues."
+	TokenType = Boolean
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "ACTIVE_PLATFORM"
+	Value  = "Project/Project.dsc"
+	Help  = "Name of the description (.dsc) file for the active platform.\Must be the same as the name specified in the PLATFORM_DSC or <Arch-Type>_PLATFORM_DSC SDL output directive."
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "TOOL_CHAIN_TAG"
+	Value  = "MYTOOLS"
+	Help  = "Tool chain tag"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "TOOL_DEFINITION_FILE"
+	Value  = "$(CONFIGURATION_DIR)$(TOOL_CHAIN_TAG)_DEF.txt"
+	Help  = "Name of the tool definition file.\This value goes to to auto-generated Conf/target.txt."
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "BUILD_RULE_FILE"
+	Value  = "$(CONFIGURATION_DIR)build_rule.txt"
+	Help  = "Name of the build rules file.\Default: $(CONFIGURATION_DIR)build_rule_Mod.txt\This value goes to to auto-generated Conf/target.txt."
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "NUMBER_OF_BUILD_PROCESS_THREADS"
+	Value  = "$(NUMBER_OF_PROCESSORS)"
+	Help  = "Number of build process threads. \Set to 1 to disable multi-threaded build (useful to debug build issues).\Set to $(NUMBER_OF_PROCESSORS) for optimal performance.\This value goes to to auto-generated Conf/target.txt."
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "EXTERNAL_CC_FLAGS"
+	Value  = "-D PI_SPECIFICATION_VERSION=0x10028 -D EFI_SPECIFICATION_VERSION=0x20032"
+	Help  = "C compiler flags that will be appended to the standard C flags in tools_def.txt"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+
+TOKEN
+	Name  = "PLATFORM_VERSION"
+	Value  = "1"
+	TokenType = Expression
+	TargetDSC = Yes
+End
+
+TOKEN
+	Name  = "PLATFORM_NAME"
+	Value  = "AptioV"
+	TokenType = Expression
+	TargetMAK = Yes
+	TargetDSC = Yes
+End
+
+TOKEN
+	Name  = "BUILD_TARGETS"
+	Value  = "RELEASE | DEBUG"
+	TokenType = Expression
+	TargetDSC = Yes
+End
+
+
+TOKEN
+	Name  = "ASL_COMPILER"
+	Value  = "iasl"
+	Help  = "Name of the iasl compiler executable located in the $(TOOLS_DIR).\Supported values:\  iasl5 - newer ACPI 5.0 compliant compiler. May cause compatibility issues with older OS.\  iasl - older ACPI 3.0a compliant compiler. May not support features introduced by the newer versions of the ACPI specification."
+	TokenType = Expression
+	TargetMAK = Yes
+	Range  = "iasl, iasl5"
+End
+
+
+ELINK
+	Name  = "FdfRules"
+	Type  = "Rule"
+	InvokeOrder = ReplaceParent
+	OutFDF = Yes
+End
+
+OUTPUTREGISTER
+	Name  = "TOKEN_H"
+	Path  = "Build"
+	File  = "Token.h"
+	Lock = Yes
+End
+
+OUTPUTREGISTER
+	Name  = "TOKEN_MAK"
+	Path  = "Build"
+	File  = "Token.mak"
+	Lock = Yes
+End
+
+OUTPUTREGISTER
+	Name  = "TOKEN_EQU"
+	Path  = "Build"
+	File  = "Token.equ"
+	Lock = Yes
+End
+
+
+########## Hard code tools ###########
+# GENFW, GenFfs, GenFv, GenSec
+######################################
+
+#TOKEN
+#	Name = "X64_TOOLS_DIR"
+#	Value = "E:\UEFI\UEFI_BuildApp\Tools\CompileTools\AMD64"
+#	TokenType = Expression
+#	TargetMAK = Yes
+#End
+
+#TOKEN
+#	Name = "IA32_TOOLS_DIR"
+#	Value = "Tools\CompileTools\X86"
+#	TokenType = Expression
+#	TargetMAK = Yes
+#End
+
+#TOKEN
+#	Name  = "FONT_TOOL"
+#	Value  = "FontTool"
+#	TokenType = Expression
+#	TargetMAK = Yes
+#End
+
+#TOKEN
+#	Name  = "FONTCFG"
+#	Value  = "Fontcfg.ini"
+#	TokenType = Expression
+#	TargetMAK = Yes
+#End
+
+TOKEN
+	Name  = "GENFW"
+#	Value  = "GenFw_02_2524" build.exe had hard code this file name
+	Value  = "GenFw"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "VFRCOMPILE"
+	Value  = "VfrCompile"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "VFRID"
+	Value  = "VfrId /nologo"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "PACKOPROM"
+	Value  = "PackOpROM /nologo"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "BPDG"
+	Value  = "BPDG"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "EFIROM"
+	Value  = "EfiRom"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "GENDEPEX"
+	Value  = "GenDepex"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "UEFIHPKTOOL"
+	Value  = "UefiHpkTool"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "FWBUILD"
+	Value  = "FWBuild"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+  Name = "X64_SUPPORT"
+  Value = 1
+  TokenType = Integer
+  TargetMak = Yes
+End

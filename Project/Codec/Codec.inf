@@ -1,0 +1,49 @@
+## @file
+#  A simple, basic, EDK II native, "hello" application.
+#
+#   Copyright (c) 2010, Intel Corporation. All rights reserved.<BR>
+#   This program and the accompanying materials
+#   are licensed and made available under the terms and conditions of the BSD License
+#   which accompanies this distribution. The full text of the license may be found at
+#   http://opensource.org/licenses/bsd-license.
+#
+#   THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = Codec
+  FILE_GUID                      = CEE816F7-52B1-4d0A-B9AC-7805A539B240
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = EntryPoint
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF
+#
+
+[Sources]
+  Codec.h
+  Codec.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  ShellPkg/ShellPkg.dec
+
+[LibraryClasses]
+#---------MdePkg--------
+  UefiApplicationEntryPoint
+  UefiLib
+
+[Protocols]
+#---------MdePkg--------
+  gEfiAcpiSdtProtocolGuid
+#--------ShellPkg-------
+  gEfiShellInterfaceGuid
+
+
+#[Event]
+# EVENT_TYPE_PERIODIC_TIMER  ## CONSUMES
+#

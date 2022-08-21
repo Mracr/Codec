@@ -1,0 +1,243 @@
+// /**
+//
+// Copyright (c) 2010 - 2012, Intel Corporation. All rights reserved. <BR>
+// This program and the accompanying materials
+// are licensed and made available under the terms and conditions of the BSD License
+// which accompanies this distribution. The full text of the license may be found at
+// http://opensource.org/licenses/bsd-license.php
+//
+// THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+// WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+//
+// Module Name:
+//
+// UefiHandleParsingLib.uni
+//
+// Abstract:
+//
+//
+//
+// **/
+
+/=#
+
+#langdef   en-US "english"
+
+//
+// Protocol names used making the GUID <-> Name bi-directional list
+//
+
+// basics Images & Device Path
+#string STR_LOADED_IMAGE          #language en-US "LoadedImage"
+#string STR_DEVICE_PATH           #language en-US "DevicePath"
+#string STR_IMAGE_PATH            #language en-US "ImageDevicePath"
+#string STR_DEVICE_PATH_UTIL      #language en-US "DevicePathUtilities"
+#string STR_DEVICE_PATH_TXT       #language en-US "DevicePathToText"
+#string STR_DEVICE_PATH_FTXT      #language en-US "DevicePathFromText"
+#string STR_DEVICE_PATH_PC        #language en-US "DevicePathPCAnsi"
+#string STR_DEVICE_PATH_VT100     #language en-US "DevicePathVT100"
+#string STR_DEVICE_PATH_VT100P    #language en-US "DevicePathVT100+"
+#string STR_DEVICE_PATH_VTUTF8    #language en-US "DevicePathVTUTF8"
+
+// Drivers
+#string STR_DRIVER_BINDING        #language en-US "DriverBinding"
+#string STR_PLATFORM_OVERRIDE     #language en-US "PlatformOverride"
+#string STR_BUS_OVERRIDE          #language en-US "BusSpecificDriverOverride"
+#string STR_DRIVER_DIAG           #language en-US "DriverDiagnostics"
+#string STR_DRIVER_DIAG2          #language en-US "DriverDiagnostics2"
+#string STR_DRIVER_CN             #language en-US "ComponentName"
+#string STR_DRIVER_CN2            #language en-US "ComponentName2"
+#string STR_PLAT_DRV_CFG          #language en-US "PlatformtoDriverConfiguration"
+#string STR_DRIVER_VERSION        #language en-US "DriverVersion"
+
+// Console
+#string STR_TXT_IN                #language en-US "SimpleTextIn"
+#string STR_TXT_IN_EX             #language en-US "SimpleTextInEx"
+#string STR_TXT_OUT               #language en-US "SimpleTextOut"
+#string STR_SIM_POINTER           #language en-US "SimplePointer"
+#string STR_ABS_POINTER           #language en-US "AbsolutePointer"
+#string STR_SERIAL_IO             #language en-US "SerialIO"
+#string STR_GRAPHICS_OUTPUT       #language en-US "GraphicsOutput"
+#string STR_EDID_DISCOVERED       #language en-US "EDIDDiscovered"
+#string STR_EDID_ACTIVE           #language en-US "EDIDActive"
+#string STR_EDID_OVERRIDE         #language en-US "EDIDOverride"
+#string STR_CON_IN                #language en-US "ConsoleIn"
+#string STR_CON_OUT               #language en-US "ConsoleOut"
+#string STR_STD_ERR               #language en-US "StdErr"
+
+// Media
+#string STR_LOAD_FILE             #language en-US "LoadFile"
+#string STR_LOAD_FILE2            #language en-US "LoadFile2"
+#string STR_SIMPLE_FILE_SYS       #language en-US "SimpleFileSystem"
+#string STR_FILE_INFO             #language en-US "FileInfo"
+#string STR_FILE_SYS_INFO         #language en-US "FileSystemInfo"
+#string STR_TAPE_IO               #language en-US "TapeIO"
+#string STR_DISK_IO               #language en-US "DiskIO"
+#string STR_BLK_IO                #language en-US "BlockIO"
+#string STR_UC                    #language en-US "UnicodeCollation"
+#string STR_UC2                   #language en-US "UnicodeCollation2"
+
+// PCI
+#string STR_PCIRB_IO              #language en-US "PCIRootBridgeIO"
+#string STR_PCI_IO                #language en-US "PCIIO"
+
+// SCSI
+#string STR_SCSI_PT               #language en-US "SCSIPassThru"
+#string STR_SCSI_IO               #language en-US "SCSIIO"
+#string STR_SCSI_PT_EXT           #language en-US "ExtendedSCSIPassThru"
+
+// iSCSI
+#string STR_ISCSI                 #language en-US "iSCSIInitiatorName"
+
+// USB
+#string STR_USB_IO                #language en-US "USBIO"
+#string STR_USB_HC                #language en-US "USBHostControler"
+#string STR_USB_HC2               #language en-US "USBHostController2"
+
+// Debug
+#string STR_DEBUG_SUPPORT         #language en-US "DebugSupport"
+#string STR_DEBUG_PORT            #language en-US "DebugPort"
+
+#string STR_DECOMPRESS            #language en-US "Decompress"
+
+#string STR_ACPI_TABLE            #language en-US "AcpiTable"
+
+#string STR_EBC_INTERPRETER       #language en-US "EBCInterpreter"
+
+// Network
+#string STR_SNP                   #language en-US "SimpleNetwork"
+#string STR_NII                   #language en-US "NetworkInterfaceIdentifier"
+#string STR_NII_31                #language en-US "NetworkInterfaceIdentifier31"
+#string STR_PXE_BC                #language en-US "PXEBaseCode"
+#string STR_PXE_CB                #language en-US "PXECallback"
+#string STR_BIS                   #language en-US "BIS"
+#string STR_MNP_SB                #language en-US "ManagedNetworkServiceBinding"
+#string STR_MNP                   #language en-US "ManagedNetwork"
+
+#string STR_ARP_SB                #language en-US "ARPServiceBinding"
+#string STR_ARP                   #language en-US "ARP"
+#string STR_DHCPV4_SB             #language en-US "DHCPv4ServiceBinding"
+#string STR_DHCPV4                #language en-US "DHCPv4"
+#string STR_TCPV4_SB              #language en-US "TCPv4ServiceBinding"
+#string STR_TCPV4                 #language en-US "TCPv4"
+#string STR_IPV4_SB               #language en-US "IPv4ServiceBinding"
+#string STR_IPV4                  #language en-US "IPv4"
+#string STR_IPV4_CFG              #language en-US "IPv4Config"
+#string STR_UDPV4_SB              #language en-US "UDPv4ServiceBinding"
+#string STR_UDPV4                 #language en-US "UDPv4"
+#string STR_MTFTPV4_SB            #language en-US "MTFTPv4ServiceBinding"
+#string STR_MTFTPV4               #language en-US "MTFTPv4"
+
+// Security
+#string STR_HASH_SB               #language en-US "HashServiceBinding"
+#string STR_HASH                  #language en-US "Hash"
+#string STR_AUTH_INFO             #language en-US "AuthenticationInfo"
+
+// HII
+#string STR_HII_FONT              #language en-US "HIIFont"
+#string STR_HII_STRING            #language en-US "HIIString"
+#string STR_HII_IMAGE             #language en-US "HIIImage"
+#string STR_HII_DATABASE          #language en-US "HIIDatabase"
+#string STR_HII_CONFIG_ROUT       #language en-US "HIIConfigRouting"
+#string STR_HII_CONFIG_ACC        #language en-US "HIIConfigAccess"
+#string STR_HII_FORM_BROWSER2     #language en-US "HIIFormBrowser2"
+
+// Shell
+#string STR_SHELL_PARAMETERS      #language en-US "ShellParameters"
+#string STR_SHELL                 #language en-US "Shell"
+
+#string STR_EFI_GLOBAL_VARIABLE   #language en-US "EFIGlobalVariable"
+
+// NT32 emulation
+#string STR_WINNT_THUNK           #language en-US "WinNTThunk"
+#string STR_WINNT_DRIVER_IO       #language en-US "WinNTDriverIO"
+#string STR_WINNT_SERIAL_PORT     #language en-US "WinNTSerialPort"
+
+#string STR_UNKNOWN_DEVICE        #language en-US "UnknownDevice"
+
+// deprecated protocols
+#string STR_SHELL_INTERFACE       #language en-US "ShellInterface"
+#string STR_SHELL_ENV             #language en-US "ShellEnvironment"
+#string STR_SHELL_ENV2            #language en-US "ShellEnvironment2"
+#string STR_SHELL_DP_MAP          #language en-US "ShellDevicePathMap"
+#string STR_SHELL_ALIAS           #language en-US "ShellAlias"
+#string STR_DEVICE_IO             #language en-US "DeviceIO"
+#string STR_TCP                   #language en-US "TCP"
+#string STR_UGA_DRAW              #language en-US "UGADraw"
+#string STR_UGA_IO                #language en-US "UGAIO"
+#string STR_ESP                   #language en-US "EFISystemPartition"
+#string STR_GPT_NBR               #language en-US "LegacyMBR"
+#string STR_DRIVER_CONFIG         #language en-US "DriverConfiguration"
+#string STR_DRIVER_CONFIG2        #language en-US "DriverConfiguration2"
+#string STR_ISA_IO                #language en-US "ISAIO"
+#string STR_ISA_ACPI              #language en-US "ISAACPI"
+#string STR_HII_FORM_BROWSER      #language en-US "HIIFormBrowser"
+#string STR_HII                   #language en-US "HII"
+#string STR_HII_FORM_CALLBACK     #language en-US "HIICallback"
+
+#string STR_TXT_OUT_DUMP_HEADER   #language en-US "  Address: %%H%X%%N Attrib %02x\r\n"
+#string STR_TXT_OUT_DUMP_LINE     #language en-US "  %c  mode %d: Col %d Row %d\r\n"
+
+#string STR_DRIVER_FAM_OVERRIDE   #language en-US "DriverFamilyOverride"
+#string STR_PCD                   #language en-US "Pcd"
+#string STR_TCG                   #language en-US "Tcg"
+#string STR_HII_PACKAGE_LIST      #language en-US "HiiPackageList"
+
+#string STR_IP6_SB                #language en-US "EfiIp6ServiceBindingProtocolGuid"
+#string STR_IP6                   #language en-US "EfiIp6ProtocolGuid"
+#string STR_IP6_CONFIG            #language en-US "EfiIp6ConfigProtocolGuid"
+#string STR_MTFTP6_SB             #language en-US "EfiMtftp6ServiceBindingProtocolGuid"
+#string STR_MTFTP6                #language en-US "EfiMtftp6ProtocolGuid"
+#string STR_DHCP6_SB              #language en-US "EfiDhcp6ServiceBindingProtocolGuid"
+#string STR_DHCP6                 #language en-US "EfiDhcp6ProtocolGuid"
+#string STR_UDP6_SB               #language en-US "EfiUdp6ServiceBindingProtocolGuid"
+#string STR_UDP6                  #language en-US "EfiUdp6ProtocolGuid"
+#string STR_TCP6_SB               #language en-US "EfiTcp6ServiceBindingProtocolGuid"
+#string STR_TCP6                  #language en-US "EfiTcp6ProtocolGuid"
+#string STR_VLAN_CONFIG           #language en-US "EfiVlanConfigProtocolGuid"
+#string STR_EAP                   #language en-US "EfiEapProtocolGuid"
+#string STR_EAP_MGMT              #language en-US "EfiEapManagementProtocolGuid"
+#string STR_FTP4_SB               #language en-US "EfiFtp4ServiceBindingProtocolGuid"
+#string STR_FTP4                  #language en-US "EfiFtp4ProtocolGuid"
+#string STR_IP_SEC_CONFIG         #language en-US "EfiIpSecConfigProtocolGuid"
+#string STR_DH                    #language en-US "EfiDriverHealthProtocolGuid"
+#string STR_DEF_IMG_LOAD          #language en-US "EfiDeferredImageLoadProtocolGuid"
+#string STR_USER_CRED             #language en-US "EfiUserCredentialProtocolGuid"
+#string STR_USER_MNGR             #language en-US "EfiUserManagerProtocolGuid"
+#string STR_ATA_PASS_THRU         #language en-US "EfiAtaPassThruProtocolGuid"
+#string STR_FW_MGMT               #language en-US "EfiFirmwareManagementProtocolGuid"
+#string STR_IP_SEC                #language en-US "EfiIpSecProtocolGuid"
+#string STR_IP_SEC2               #language en-US "EfiIpSec2ProtocolGuid"
+#string STR_KMS                   #language en-US "EfiKmsProtocolGuid"
+#string STR_BLK_IO2               #language en-US "EfiBlockIo2ProtocolGuid"
+#string STR_SSC                   #language en-US "EfiStorageSecurityCommandProtocolGuid"
+#string STR_UC2                   #language en-US "EfiUserCredential2ProtocolGuid"
+
+#string STR_PCIRB_DUMP_PH         #language en-US "     ParentHandle..: %H%x%N\r\n"
+#string STR_PCIRB_DUMP_SEG        #language en-US "     Segment #.....: %H%x%N\r\n"
+#string STR_PCIRB_DUMP_ATT        #language en-US "     Attributes....: %H%x%N\r\n"
+#string STR_PCIRB_DUMP_SUPPORTS   #language en-US "     Supports......: %H%x%N\r\n"
+#string STR_PCIRB_DUMP_BUS        #language en-US "      BUS : "
+#string STR_PCIRB_DUMP_MEM        #language en-US "      MEM : "
+#string STR_PCIRB_DUMP_IO         #language en-US "      IO  : "
+#string STR_PCIRB_DUMP_TITLE      #language en-US "      Type  Flag  Base              Limit             Gran\r\n"
+                                                  "      ====  ====  ================  ================  ====\r\n"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

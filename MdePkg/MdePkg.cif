@@ -1,0 +1,14 @@
+<component>
+	name = "MdePkg"
+	category = eCore
+	LocalRoot = "MdePkg\"
+	RefName = "MdePkg"
+[files]
+"MdePkg.dec"	   
+"MdePkg.uni" 
+"MdePkgExtra.uni" 
+"License.txt"		
+[parts]
+"MdePkg.Include"
+"MdePkg.LibraryInstances"
+<endComponent>

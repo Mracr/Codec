@@ -1,0 +1,256 @@
+#!include tools_def.txt
+#
+IDENTIFIER = Default TOOL_CHAIN_CONF
+################################################################
+### Tool Chain Specific Definitions
+################################################################
+#
+# OEMTOOLS
+#
+#########################################################################################
+*_MYTOOLS_*_*_FAMILY 			= MSFT
+
+#################################################################
+## Commond Macros
+#################################################################
+DEFINE  IA32_PREFIX 		= ENV(IA32_TOOLS_DIR)\
+DEFINE   X64_PREFIX 		= ENV(X64_TOOLS_DIR)\
+
+ ##########################################
+# CC_FLAGS
+##########################################
+DEFINE COMMON_CC_FLAGS = /nologo /c /WX /GS- /W3 /Gs32768 /Gy /D UNICODE /GL /FIAutoGen.h /EHs-c- /GR- /GF ENV(EXTERNAL_CC_FLAGS)
+DEBUG_*_IA32_CC_FLAGS      =  /Zi /Gm DEF(COMMON_CC_FLAGS)
+RELEASE_*_IA32_CC_FLAGS      = DEF(COMMON_CC_FLAGS)
+
+#<ASUS-Mod+>
+DEBUG_*_IA32_OEMCC_FLAGS             =/Oi /GS- /O1 /GF /Zp1 /W3 /nologo /c /TP /Zc:wchar_t /DASIO_EXPORTS /DWIN32 /D_WINDOWS /DPURE_LIBRARY
+RELEASE_*_IA32_OEMCC_FLAGS             =/Oi /GS- /O1 /GF /Zp1 /W3 /nologo /c /TP /Zc:wchar_t /DASIO_EXPORTS /DWIN32 /D_WINDOWS /DPURE_LIBRARY
+
+DEBUG_*_IA32_OEMDLINK_FLAGS     =  /OPT:ICF /OPT:REF /INCREMENTAL:NO /NOLOGO /DLL /NODEFAULTLIB /NOENTRY /MACHINE:X86
+RELEASE_*_IA32_OEMDLINK_FLAGS    =  /OPT:ICF /OPT:REF /INCREMENTAL:NO /NOLOGO /DLL /NODEFAULTLIB /NOENTRY /MACHINE:X86
+#<ASUS-Mod->
+
+DEBUG_*_X64_CC_FLAGS       = /Zi /Gm -DEFIx64 -DEFIX64 DEF(COMMON_CC_FLAGS)
+RELEASE_*_X64_CC_FLAGS       = -DEFIx64 -DEFIX64 DEF(COMMON_CC_FLAGS)
+
+#<ASUS-Mod+>
+DEBUG_*_X64_OEMCC_FLAGS             =/Oi /GS- /O1 /GF /Zp1 /W3 /nologo /c /TP /Zc:wchar_t /DASIO_EXPORTS /DWIN32 /D_WINDOWS /DPURE_LIBRARY
+RELEASE_*_X64_OEMCC_FLAGS             =/Oi /GS- /O1 /GF /Zp1 /W3 /nologo /c /TP /Zc:wchar_t /DASIO_EXPORTS /DWIN32 /D_WINDOWS /DPURE_LIBRARY
+
+DEBUG_*_X64_OEMDLINK_FLAGS     =  /OPT:ICF /OPT:REF /INCREMENTAL:NO /NOLOGO /DLL /NODEFAULTLIB /NOENTRY /MACHINE:X64
+RELEASE_*_X64_OEMDLINK_FLAGS    =  /OPT:ICF /OPT:REF /INCREMENTAL:NO /NOLOGO /DLL /NODEFAULTLIB /NOENTRY /MACHINE:X64
+#<ASUS-Mod->
+
+##########################################
+# ASM_FLAGS
+##########################################
+DEFINE COMMON_ASM_FLAGS = /nologo /c /WX /W3 /Cx /Zd
+DEBUG_*_IA32_ASM_FLAGS     = DEF(COMMON_ASM_FLAGS) /coff /Zi
+RELEASE_*_IA32_ASM_FLAGS     = DEF(COMMON_ASM_FLAGS) /coff
+DEBUG_*_X64_ASM_FLAGS      = DEF(COMMON_ASM_FLAGS) /Zi
+RELEASE_*_X64_ASM_FLAGS      = DEF(COMMON_ASM_FLAGS)
+##########################################
+# DLINK_FLAGS
+##########################################
+DEFINE COMMON_DLINK_FLAGS = /NOLOGO /NODEFAULTLIB /IGNORE:4001 /OPT:REF /OPT:ICF=10 /MAP /ALIGN:32 /SECTION:.xdata,D /SECTION:.pdata,D /LTCG /DLL /ENTRY:$(IMAGE_ENTRY_POINT) /SUBSYSTEM:EFI_BOOT_SERVICE_DRIVER /SAFESEH:NO /BASE:0 /DRIVER
+DEBUG_*_IA32_DLINK_FLAGS   = /MACHINE:I386 DEF(COMMON_DLINK_FLAGS) /DEBUG /PDB:$(DEBUG_DIR)/$(BASE_NAME).pdb
+RELEASE_*_IA32_DLINK_FLAGS   = /MACHINE:I386 DEF(COMMON_DLINK_FLAGS) /MERGE:.data=.text /MERGE:.rdata=.text /IGNORE:4254 /PDB:$(DEBUG_DIR)/$(BASE_NAME).pdb
+DEBUG_*_X64_DLINK_FLAGS    = /Machine:AMD64 DEF(COMMON_DLINK_FLAGS) /DEBUG
+RELEASE_*_X64_DLINK_FLAGS    = /Machine:AMD64 DEF(COMMON_DLINK_FLAGS) /MERGE:.data=.text /MERGE:.rdata=.text /IGNORE:4254
+
+##########################################
+# MAKE_FLAGS
+##########################################
+*_*_*_MAKE_FLAGS             = /nologo
+
+##########################################
+# SLINK_FLAGS
+##########################################
+*_*_*_SLINK_FLAGS            = /LIB /nologo /LTCG
+
+##########################################
+# Preprocessor Flags
+##########################################
+DEFINE COMMON_PP_FLAGS_WITH_LINE_DIRECTIVE = /nologo /E /TC
+DEFINE COMMON_PP_FLAGS_NO_LINE_DIRECTIVE = /nologo /EP /TC
+DEFINE COMMON_PP_FLAGS = DEF(COMMON_PP_FLAGS_WITH_LINE_DIRECTIVE)
+
+*_*_*_VFRPP_FLAGS            = DEF(COMMON_PP_FLAGS) /DVFRCOMPILE /FI$(MODULE_NAME)StrDefs.h ENV(EXTERNAL_CC_FLAGS)
+*_*_*_APP_FLAGS              = DEF(COMMON_PP_FLAGS)
+*_*_*_PP_FLAGS               = DEF(COMMON_PP_FLAGS) /FIAutoGen.h
+*_*_*_ASLPP_FLAGS            = DEF(COMMON_PP_FLAGS_NO_LINE_DIRECTIVE)
+
+##########################################
+# CBIN_FLAGS, ASLCC_FLAGS (C files that produce binaries)
+##########################################
+*_*_*_CBINCC_FLAGS           = /nologo /c /TC /Os /FIAutoGen.h
+*_*_*_ASLCC_FLAGS            = /nologo /c /TC /FIAutoGen.h /Dmain=ReferenceAcpiTable
+*_*_*_CBINDLINK_FLAGS        = /nologo /NODEFAULTLIB /NOENTRY /DLL /ALIGN:16
+*_*_*_ASLDLINK_FLAGS         = /nologo /NODEFAULTLIB /ENTRY:ReferenceAcpiTable /SUBSYSTEM:EFI_BOOT_SERVICE_DRIVER
+
+##########################################
+# ASMLINK_FLAGS (ASM 16 linker)
+##########################################
+*_*_*_ASMLINK_FLAGS          = /nologo /tiny
+
+##########################################
+# NASM_FLAGS
+##########################################
+DEBUG_*_IA32_NASM_FLAGS    = -O0 -f win32 -g
+RELEASE_*_IA32_NASM_FLAGS  = -Ox -f win32
+DEBUG_*_X64_NASM_FLAGS     = -O0 -f win64 -g
+RELEASE_*_X64_NASM_FLAGS   = -Ox -f win64
+
+#######################################################
+## Built Tool Paths
+#######################################################
+
+##########################################
+# Common for all architectures
+##########################################
+
+
+
+##########################################
+# IA32 Paths
+##########################################
+*_*_IA32_MAKE_PATH            = DEF(IA32_PREFIX)nmake.exe
+*_*_IA32_ASM16_PATH           = DEF(IA32_PREFIX)ml64.exe
+
+*_*_IA32_CC_PATH             = DEF(IA32_PREFIX)cl.exe
+*_*_IA32_SLINK_PATH          = DEF(IA32_PREFIX)link.exe
+*_*_IA32_DLINK_PATH          = DEF(IA32_PREFIX)link.exe
+*_*_IA32_PP_PATH             = DEF(IA32_PREFIX)cl.exe
+*_*_IA32_VFRPP_PATH          = DEF(IA32_PREFIX)cl.exe
+*_*_IA32_APP_PATH            = DEF(IA32_PREFIX)cl.exe
+*_*_IA32_ASM_PATH            = DEF(IA32_PREFIX)ml.exe
+*_*_IA32_ASLCC_PATH          = DEF(IA32_PREFIX)cl.exe
+*_*_IA32_ASLPP_PATH          = DEF(IA32_PREFIX)cl.exe
+*_*_IA32_ASLDLINK_PATH       = DEF(IA32_PREFIX)link.exe
+
+##########################################
+# X64 Paths
+##########################################
+*_*_X64_MAKE_PATH            = DEF(X64_PREFIX)nmake.exe
+*_*_X64_ASM16_PATH           = DEF(X64_PREFIX)ml64.exe
+
+*_*_X64_CC_PATH              = DEF(X64_PREFIX)cl.exe
+*_*_X64_SLINK_PATH           = DEF(X64_PREFIX)link.exe
+*_*_X64_DLINK_PATH           = DEF(X64_PREFIX)link.exe
+*_*_X64_PP_PATH              = DEF(X64_PREFIX)cl.exe
+*_*_X64_VFRPP_PATH           = DEF(X64_PREFIX)cl.exe
+*_*_X64_APP_PATH             = DEF(X64_PREFIX)cl.exe
+*_*_X64_ASM_PATH             = DEF(X64_PREFIX)ml64.exe
+*_*_X64_ASLCC_PATH           = DEF(X64_PREFIX)cl.exe
+*_*_X64_ASLPP_PATH           = DEF(X64_PREFIX)cl.exe
+*_*_X64_ASLDLINK_PATH        = DEF(X64_PREFIX)link.exe
+
+
+#################
+# ASM 16 linker defintions
+#################
+#*_*_*_ASMLINK_PATH                 = DEF(WINDDK_BIN16)\link16.exe
+#*_*_*_ASMLINK_FLAGS                = /nologo /tiny
+
+##################
+# VfrCompiler definitions
+##################
+*_*_*_VFR_PATH                      = VfrCompile
+*_*_*_VFR_FLAGS                     = -l -n
+
+##################
+# OptionRom tool definitions
+##################
+*_*_*_OPTROM_PATH                   = EfiRom
+*_*_*_OPTROM_FLAGS                  = -e
+
+##################
+# GenFw tool definitions
+##################
+*_*_*_GENFW_PATH                   = GenFw
+*_*_*_GENFW_FLAGS                  =
+
+##################
+# Asl Compiler definitions
+##################
+*_*_*_ASLCC_FLAGS                  = /nologo /c /FIAutoGen.h /TC /Dmain=ReferenceAcpiTable
+*_*_*_ASLDLINK_FLAGS               = /NODEFAULTLIB /ENTRY:ReferenceAcpiTable /SUBSYSTEM:CONSOLE
+*_*_*_ASLPP_FLAGS                  = /nologo /EP /C
+*_*_*_ASL_FLAGS                    =
+
+##################
+# GenCrc32 tool definitions
+##################
+*_*_*_CRC32_PATH          = GenCrc32
+*_*_*_CRC32_GUID          = FC1BCDB0-7D31-49AA-936A-A4600D9DD083
+
+##################
+# Rsa2048Sha256Sign tool definitions
+#
+# Notes: This tool defintion uses a test signing key for development purposes only.
+#        The tool Rsa2048Sha256GenerateKeys can be used to generate a new private/public key
+#        and the gEfiSecurityPkgTokenSpaceGuid.PcdRsa2048Sha256PublicKeyBuffer PCD value.
+#        A custom tool/script can be implemented using the new private/public key with
+#        the Rsa2048Sha256Sign tool and this tool defintiion can be updated to use a
+#        custom tool/script.
+#
+#   Generate new private/public key and gEfiSecurityPkgTokenSpaceGuid.PcdRsa2048Sha256PublicKeyBuffer PCD value
+#
+#       Rsa2048Sha256GenerateKeys.py -o MyKey.pem --public-key-hash-c MyKey.pcd
+#
+#   Custom script example (MyRsa2048Sha256Sign.cmd):
+#
+#       Rsa2048Sha256Sign --private-key MyKey.pem %1 %2 %3 %4 %5 %6 %7 %8 %9
+#
+#   WARNING: Vendors that uses private keys are responsible for proper management and protection 
+#            of private keys.  Vendors may choose to use infrastructure such as signing servers 
+#            or signing portals to support the management and protection of private keys.
+#
+##################
+*_*_*_RSA2048SHA256SIGN_PATH = Rsa2048Sha256Sign
+*_*_*_RSA2048SHA256SIGN_GUID = A7717414-C616-4977-9420-844712A735BF
+
+##################
+# LzmaCompress tool definitions
+##################
+*_*_*_LZMA_PATH          = LzmaCompress
+*_*_*_LZMA_GUID          = EE4E5898-3914-4259-9D6E-DC7BD79403CF
+
+##################
+# LzmaF86Compress tool definitions with converter for x86 code.
+# It can improve the compression ratio if the input file is IA32 or X64 PE image.
+# Notes: If X64 PE image is built based on GCC44, it may not get the better compression.
+##################
+*_*_*_LZMAF86_PATH         = LzmaF86Compress
+*_*_*_LZMAF86_GUID         = D42AE6BD-1352-4bfb-909A-CA72A6EAE889
+
+##################
+# TianoCompress tool definitions
+##################
+*_*_*_TIANO_PATH         = TianoCompress
+*_*_*_TIANO_GUID         = A31280AD-481E-41B6-95E8-127F4C984779
+
+##################
+# BPDG tool definitions
+##################
+*_*_*_VPDTOOL_PATH         = BPDG
+*_*_*_VPDTOOL_GUID         = 8C3D856A-9BE6-468E-850A-24F7A8D38E08
+
+##################
+# Pkcs7Sign tool definitions
+##################
+*_*_*_PKCS7SIGN_PATH       = Pkcs7Sign
+*_*_*_PKCS7SIGN_GUID       = 4AAFD29D-68DF-49EE-8AA9-347D375665A7
+
+##################
+# NASM tool definitions
+##################
+*_*_*_NASM_PATH                = ENV(NASM_PREFIX)nasm
+# NASMB uses NASM produce a .bin from a .nasmb NASM source file
+*_*_*_NASMB_FLAGS              = -f bin
+
+#################
+# Build rule order
+#################
+*_*_*_*_BUILDRULEORDER = nasm asm Asm ASM S s

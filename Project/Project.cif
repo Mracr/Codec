@@ -1,0 +1,12 @@
+<component>
+	name = "ApplicationPkg"
+	category = eBoard
+	LocalRoot = "Application\"
+	RefName = "ApplicationPkg"
+[files]
+"Project.dec"	
+"Project.dsc"
+"Project.sdl"	
+[INF]
+"Project\Codec\Codec.inf"
+<endComponent>

@@ -1,0 +1,20 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "MdePkg\Include\"
+	RefName = "MdePkg.Include"
+[files]
+"Base.h"	
+"PiDxe.h"	
+"PiPei.h"	
+"PiSmm.h"	
+"Uefi.h"	
+[parts]
+"MdePkg.Guid"
+"MdePkg.IndustryStandard"
+"MdePkg.Library"
+"MdePkg.Pi"
+"MdePkg.Protocol"
+"MdePkg.Uefi"
+"MdePkg.X64"
+<endComponent>

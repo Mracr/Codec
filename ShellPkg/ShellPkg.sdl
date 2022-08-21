@@ -1,0 +1,8 @@
+TOKEN
+	Name  = "ShellPkg_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling ShellPkg support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Token = "ASUS_FSP_OVERRIDE_SUPPORT" "=" "1"  #<ASUS-MOD+>, For FSP rebuild.
+End

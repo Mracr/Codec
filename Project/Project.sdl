@@ -1,0 +1,22 @@
+TOKEN
+	Name  = "Project_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Project support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "PROJECT_NAME"
+	Value  = "Codec"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "SUPPORTED_ARCHITECTURES"
+	Value  = "X64"
+	TokenType = Expression
+	TargetMAK = Yes
+End

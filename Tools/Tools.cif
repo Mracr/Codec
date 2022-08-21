@@ -1,0 +1,18 @@
+<component>
+	name = "Tools"
+	category = CPU
+	LocalRoot = "Tools\"
+	RefName = "Tools"
+[files]
+"build_rule.txt"
+"MYTOOLS_DEF.txt"
+"Configuration.sdl"
+"RunAmiSdl.mak"
+"ToolChainInit.mak"
+"utilities.mak"
+"main.mak"
+[parts]
+"VC7_1_Tools"
+"X64_Tools"
+"BaseTools"
+<endComponent>
